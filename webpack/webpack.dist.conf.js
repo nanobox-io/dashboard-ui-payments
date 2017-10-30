@@ -16,6 +16,7 @@ module.exports        = merge(baseWebpackConfig, {
     // Add any libraries you want odin to manage here:
     lodash : 'lodash',
     vue : 'vue',
+    // 'braintree-web' : 'braintree-web',
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
