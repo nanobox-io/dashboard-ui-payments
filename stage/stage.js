@@ -1,7 +1,7 @@
 require('nanobox-core-styles/scss/_base.scss')
 
 import Shim from './shim'
-import {paypal, creditCard} from '../src/main.js'
+import {paypal, creditCard, miniNav} from '../src/main.js'
 import Vue from 'vue'
 
 Vue.config.productionTip = false;
@@ -31,17 +31,19 @@ let callbacks = {
 
 new Vue({
   template : `<div>
-                <paypal :token="token" @complete="callbacks.paypalComplete"/>
-                <credit-card :token="token" @complete="callbacks.ccSubmitComplete" @error="callbacks.ccError" @ready="callbacks.ccReadyForSubmit" @invalid="callbacks.ccInvalidField" ref="card"/>
+                <mini-nav @change="selectedItem = arguments[0]"/>
+                <paypal :token="token" @complete="callbacks.paypalComplete" v-if="selectedItem == 'paypal'" />
+                <credit-card v-once :token="token" @complete="callbacks.ccSubmitComplete" @error="callbacks.ccError" @ready="callbacks.ccReadyForSubmit" @invalid="callbacks.ccInvalidField" ref="card" v-if="selectedItem == 'card'" />
                 <button @click="submitCard">Submit</button>
               </div>
              `,
   el       : '#app',
   data     : {
-    token     : shim.data.clientToken,
-    callbacks : callbacks
+    selectedItem : 'card',
+    token        : shim.data.clientToken,
+    callbacks    : callbacks
   },
-  components:{ paypal, creditCard},
+  components:{ paypal, creditCard, miniNav },
   methods:{
     submitCard(){
       this.$refs.card.submit()

@@ -1,7 +1,10 @@
 <script type="text/babel">
-import braintree from 'braintree-web'
+import braintree  from 'braintree-web'
+import paypalIcon from './assets/svg/paypal.svg'
+
 export default {
   name: 'paypal',
+  components: {paypalIcon},
   props: ['token'],
   mounted(){
     this.createBrainTreeClient()
@@ -62,7 +65,9 @@ export default {
 
 <template lang="pug">
   .paypal
-    button(@click="tokenizePaypal") Do it!
+    .icon
+      paypal-icon
+    .btn.basic(@click="tokenizePaypal") Authorize via Paypal
 </template>
 
 <!--
@@ -70,5 +75,10 @@ export default {
 -->
 
 <style lang="scss" scoped>
-  .paypal {}
+  .paypal { display: flex; align-items: center;
+    .icon {border-radius:50%; width:60px; height:60px; border:solid 1px #1DADF2; padding:10px;
+      svg {margin-top:-2px; margin-left:2px}
+    }
+    .btn  {margin-left:20px; }
+  }
 </style>

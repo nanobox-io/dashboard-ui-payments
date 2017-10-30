@@ -1,6 +1,6 @@
 {
   "name": "payments",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Micro component for adding payment methods",
   "author": "Mark Parson <mark@nanobox.io>",
   "private": true,
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "braintree-web": "^3.24.1",
+    "lexi": "tolmark12/nanobox-lexi",
     "shadow-icons": "Tolmark12/shadow-icons-js"
   },
   "devDependencies": {
