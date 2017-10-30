@@ -1,6 +1,6 @@
 {
   "name": "payments",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Micro component for adding payment methods",
   "author": "Mark Parson <mark@nanobox.io>",
   "private": true,

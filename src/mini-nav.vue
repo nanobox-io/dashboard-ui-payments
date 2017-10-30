@@ -24,7 +24,7 @@ export default {
 
 <template lang="pug">
   .mini-nav
-    .item.card(v-bind:class="{ active: state == 'card' }" @click="state = 'card'")
+    .item.cc(v-bind:class="{ active: state == 'card' }" @click="state = 'card'")
       credit-card
       radio(v-model="state" val="card") Credit Card
     .item.paypal(v-bind:class="{ active: state == 'paypal' }" @click="state = 'paypal'")
@@ -46,7 +46,7 @@ export default {
       }
       svg          {height:50px; }
       &.paypal svg {width:25px; }
-      &.card svg   {width:43px; }
+      &.cc   svg   {width:43px; }
 
     }
   }
